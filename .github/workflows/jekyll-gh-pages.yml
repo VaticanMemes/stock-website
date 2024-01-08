@@ -21,6 +21,11 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+defaults:
+  -
+    scope:
+      path: "./dist/index.html"
+
 jobs:
   # Build job
   build:
