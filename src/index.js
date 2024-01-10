@@ -13,7 +13,7 @@ async function fetchStock(apiKey, stockticker) {
 		)
 		.then(
 			function(data) {
-				stockPriceDisplayer(`${data['ticker']}: ${data['results'][0]['c']}`);
+				stockPriceDisplayer(`<p>${data['ticker']}: $${data['results'][0]['c']}`);
 			}
 		)
 }
