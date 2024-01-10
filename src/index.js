@@ -13,17 +13,26 @@ async function fetchStock(apiKey, stockticker) {
 		)
 		.then(
 			function(data) {
+				try {
 				stockPriceDisplayer(`<p>${data['ticker']}: $${data['results'][0]['c']}`);
+				}
+				catch(err) {
+					errorFunction();
+				}
 			}
 		)
 }
 
+function errorFunction() {
+	document.getElementById("ticker_input").classList.add("is-invalid")
+}
+
 function stockPriceDisplayer(input) {
+	document.getElementById("ticker_input").classList.remove("is-invalid")
 	document.getElementById("stock_price").innerHTML = input;
 }
 
 document.getElementById("submit").addEventListener("click", (evt) => {
 	evt.preventDefault();
 	fetchStock(API_key, document.getElementById("ticker_input").value);
-	// document.getElementById("stock_price").innerHTML = `${tickerAndPrice[0]}: ${tickerAndPrice[1]}`;
 	})
